@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Proposed App Layout</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="home_view_title">Super Duper Password Utility Tool 9001</string>
+    <string name="home_view_pass">Enter Proposed Password</string>
+    <string name="home_view_button">Analyse Password</string>
+    <string name="home_view_hint">Password</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_account">Account</string>
+    <string name="menu_settings">Settings</string>
+</resources>
