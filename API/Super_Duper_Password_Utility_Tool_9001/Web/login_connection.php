@@ -4,17 +4,19 @@
     require_once 'connection.php';
     $response = array();
     
-    if(isset($_GET['apicall'])) {
+    if(isset($_GET['callAPI'])) {
 
-        switch($_GET['apicall']) {
+        switch($_GET['callAPI']) {
            
             case 'login';           
             $username = $POST['username'];
             $password = password_hash($POST['password']);
+            //prepared statement
             $stmt = $con->prepare('SELECT id, username FROM Accounts WHERE username = ? AND password = ?');
             $stmt->bindParam(1, $_POST['username']);
             $stmt->execute();
             $stmt->store_result();
+
 
             if($stmt->num_rows > 0) {
 
@@ -33,11 +35,9 @@
                 $response['message'] = 'Invalid username or password';
             }
         break;
-            case 'signup':
-                break;
         default:
                 $response['error'] = true;
-                $response['message'] = 'Invalid Operation';
+                $response['message'] = 'Invalid ';
         }
     } else {
         $response['error'] = true;
