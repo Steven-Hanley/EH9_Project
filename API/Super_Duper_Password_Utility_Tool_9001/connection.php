@@ -1,0 +1,82 @@
+<?php
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+    
+    $conn = null;
+
+    function setupConnection() {
+
+        GLOBAL $conn;
+
+        $host = "***REMOVED***";
+        $dbase = "***REMOVED***";
+        $username = "***REMOVED***";
+        $password = "***REMOVED***";
+
+        // error handling for db connection
+        try {
+            // successful
+            $conn = new PDO
+            (
+                "mysql:host=" . $host 
+                . ";dbname=" . $dbase, 
+                $username, $password
+            );
+            $conn->exec("set names utf8");
+        } catch (PDOExecption $exception) {
+            //echo $exception;
+            // unsuccessful
+            echo "Connection error: " . $exception->getMessage();
+        }
+    }
+
+    function checkAccount() {
+
+        GLOBAL $conn;
+
+        if (!isset($_POST['username'], $_POST['password'])) {
+            exit("You know the rules and so do I!");
+        } else {
+            if ($stmt = $conn->prepare('SELECT * FROM Accounts WHERE username = ?')) {
+                    $stmt->bindParam(1, $_POST['username']);
+                    $stmt->execute();
+                    //$stmt->store_result();
+
+                    // fetch the record
+                    $num = $stmt->fetch(PDO::FETCH_ASSOC);
+                    
+                    // check if that account exists
+                    if (is_array($num)) {
+                        // compare the entered password to that password record
+                        // change to password verify for hashed passwords
+                        if ($_POST['password'] == $num['password']) {
+                            // passwords match
+                            session_regenerate_id();
+                            $_SESSION['valid_user'] = TRUE;
+                            $_SESSION['user_id'] = $num['USER_ID'];
+                            header("Location: Index.php");
+                            
+                        } else {
+                            // passwords don't match
+                            echo "Incorrect details"; echo "<br>"; 
+                        }
+                    } else {
+                        // no entries
+                        echo "Incorrect details"; echo "<br>";
+
+                    }
+
+                    $stmt->close();
+                }
+        }
+
+
+    }
+
+    session_start();
+    setupConnection();
+    echo "yes";
+    checkAccount();
+    echo "yes";
+?>
