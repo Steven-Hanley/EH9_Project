@@ -10,7 +10,7 @@
            
             case 'login';           
             $username = $POST['username'];
-            $password = password_hash($POST['password']);
+            $password = password_hash($POST['password'], PASSWORD_DEFAULT);
             //prepared statement
             $stmt = $con->prepare('SELECT id, username FROM Accounts WHERE username = ? AND password = ?');
             $stmt->bindParam(1, $_POST['username']);
@@ -43,6 +43,4 @@
         $response['error'] = true;
         $response['message'] = 'Invalid API Call';
     }
-
-
 ?>
