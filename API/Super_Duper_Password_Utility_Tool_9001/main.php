@@ -10,8 +10,14 @@
 			include 'Password_Reuse.php';
 			
             $userpassword = $_POST['password'];
-            $id = $_SESSION['user_id']; 
-			if (!isset($_SESSION['valid_user'])) {
+
+            if (isset($_SESSION['user_id'])) {
+				$id = $_SESSION['user_id'];
+            }
+
+             
+
+			if (isset($_SESSION['valid_user'])) {
 				passwordReuse($id, $userpassword);
             }
 
