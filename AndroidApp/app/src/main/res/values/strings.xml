@@ -1,6 +1,20 @@
 <resources>
     <string name="app_name">Super Duper Password Utility Tool 9001</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_account">Account</string>
+    <string name="title_settings">Settings</string>
+
+    <!-- Home Strings -->
+    <string name="homePasswordPrompt">Enter Password</string>
+    <string name="homeSubmitButtonText">Analyse</string>
+    <string name="homeResultsHeader">Results</string>
+    <string name="homeResultsField">put text in me</string>
+    <string name="homeExpandButton">See More</string>
+
+    <!-- Settings Strings -->
+    <string name="themeDescriptor">Choose Theme</string>
+    <string name="themeBtnDefault">Default</string>
+    <string name="themeBtnDark">Dark</string>
+    <string name="themeBtnLight">Light</string>
+
 </resources>
