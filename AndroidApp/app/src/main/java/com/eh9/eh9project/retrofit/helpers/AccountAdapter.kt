@@ -10,9 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.eh9.eh9project.R
 import com.eh9.eh9project.retrofit.models.Account
 
+/**
+ * responsible for adding items to the recycler view
+ */
 class AccountAdapter(private val accountList: List<Account>) : RecyclerView.Adapter<AccountAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountAdapter.ViewHolder {
+        // the layout has not been initialised hence the error
         val view = LayoutInflater.from(parent.context).inflate(R.layout.account_item, parent, false)
         return ViewHolder(view)
     }
@@ -29,10 +33,14 @@ class AccountAdapter(private val accountList: List<Account>) : RecyclerView.Adap
 
     class ViewHolder(itemView : View) :RecyclerView.ViewHolder(itemView) {
 
+        // these id's have not been initialised yet
         var usernameTitle = itemView.findViewById<TextView>(R.id.usernameText)
         var passwordTitle = itemView.findViewById<TextView>(R.id.passwordText)
         var userIDTitle = itemView.findViewById<TextView>(R.id.userIDText)
 
+        /**
+         *
+         */
         fun bind(account: Account) {
             usernameTitle.text = account.username
             passwordTitle.text = account.password

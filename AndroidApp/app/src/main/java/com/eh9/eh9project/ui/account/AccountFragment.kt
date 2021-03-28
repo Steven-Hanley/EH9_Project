@@ -1,4 +1,4 @@
-package com.eh9.eh9project.ui.home
+package com.eh9.eh9project.ui.account
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,18 +10,18 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.eh9.eh9project.R
 
-class HomeFragment : Fragment() {
+class AccountFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var accountViewModel: AccountViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-                ViewModelProvider(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        accountViewModel =
+                ViewModelProvider(this).get(AccountViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_account, container, false)
 
         return root
     }

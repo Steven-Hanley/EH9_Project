@@ -4,12 +4,16 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * build services using retrofit and the interface
+ */
 object ServiceBuilder {
     private val URL = "https://***REMOVED***/***REMOVED***/Super_Duper_Password_Utility_Tool_9001/Web/"
 
     // http client creation
     private val okHttp = OkHttpClient.Builder()
 
+    // retrofit builder
     private val builder = Retrofit.Builder().baseUrl(URL)
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttp.build())
