@@ -28,7 +28,7 @@
         } catch (PDOExecption $exception) {
             //echo $exception;
             // unsuccessful
-            echo "Connection error: " . $exception->getMessage();
+            //echo "Connection error: " . $exception->getMessage();
         }
     }
 
@@ -43,15 +43,15 @@
 
         // error statements
         if (!($stmt = $conn->prepare($sql))) {
-            echo "Prepare failed ";
+            //echo "Prepare failed ";
         }
 
         if (!($stmt->bindParam(1, $userID))) {
-            echo "Binding parameters 1 failed "; echo "<br>";
+         //   echo "Binding parameters 1 failed "; echo "<br>";
         } 
         
         if (!($stmt->execute())) {
-            echo "Execute failed "; echo "<br>";
+          //  echo "Execute failed "; echo "<br>";
             print_r($stmt->errorInfo());
         }
 
@@ -64,24 +64,24 @@
             // compare the entered password to that password record
             if (password_verify($userPassword, $num['password'])) {
                 // passwords match
-                echo "Password has been used before."; echo "<br>";
+              //  echo "Password has been used before."; echo "<br>";
             } else {
                 // passwords don't match
-                echo "Password has not been used before."; echo "<br>";
+               // echo "Password has not been used before."; echo "<br>";
 
                 // insert password data under that user id
                 if (insertPasswordData($userID, $userPassword)) {
                     // success
-                    echo "you can insert the password."; echo "<br>";
+                  //  echo "you can insert the password."; echo "<br>";
 
                 } else {
                     // failure
-                    echo "you can't insert the password here."; echo "<br>";
+                  //  echo "you can't insert the password here."; echo "<br>";
                 }
             }
         } else {
             // no entries
-            echo "No entries."; echo "<br>";
+         //   echo "No entries."; echo "<br>";
 
         }
     }

@@ -1,34 +1,11 @@
-<!DOCTYPE html>
 
-<html>
-
-    <title>Api Prototype</title>
-   
-    <body>
-		<!-- Legacy form for testing purposes-->
-		<!--
-        <form method="post" action=" echo $_SERVER['PHP_SELF'];">                    
-        Input Password: <input type="text" name ="testPassword">
-        <input type="submit">
-        </form>
-		-->
-		
         <?php
-			//Initialise global variables
-			$lengthScore = 0;
-			$numericScore = 0;
-			$complexScore = 0;
-			$capitalScore = 0;
-			$lowerScore = 0;    
-			$repeatingScore = 0;
-			$consecutiveScore = 0;
-				
-            if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+        
                 //This function Scores the length of the user password
                 function length($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5) { 
 					//Import score
-                    GLOBAL $lengthScore;
 					if (strlen($userPassword)) {
+                        $lengthScore = 0;
 						//check password ageainst criteria
                         if (strlen($userPassword) <= 7) {
 
@@ -52,11 +29,11 @@
                         }                           
                      }  
 					//output Score
-                    echo "Length Score: $lengthScore,\r\n <br>";
+                    return $lengthScore;
                 };
 				//This function Scores the number of capitals in the user password
                 function capitals($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5) {
-                    GLOBAL $capitalScore;
+                    $capitalScore = 0;
 					if (preg_match('/[A-Z]/', $userPassword)) {
                         if (!preg_match_all('/[A-Z]/', $userPassword)) {
 
@@ -80,11 +57,11 @@
 
                         }   
                     }  
-                    echo "Capital Score: $capitalScore, <br>";
+                    return $capitalScore;
                 };
 				//This function Scores the number of lower case letters in the user password
                 function lower($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5) {
-                    GLOBAL $lowerScore;
+                    $lowerScore = 0;
 					if (preg_match('/[A-Z]/', $userPassword)) {
                         if (preg_match_all('/[a-z]/', $userPassword) <= 3) {
 
@@ -107,11 +84,11 @@
                             $capitalScore = $Score5;    
                         }   
                     }  
-                    echo "Lower Score: $lowerScore, <br>";
+                    return $lowerScore;
                 };
 				//This function Scores the number of numbers in the user password
                 function numbers($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5) {
-                    GLOBAL $numericScore;
+                    $numericScore = 0;
 					if (preg_match('/[0-9]/', $userPassword)) {
                         if (preg_match_all('/[0-9]/', $userPassword) <= 2) {
 
@@ -134,11 +111,11 @@
                             $numericScore += $Score5;
                         }                             
                     }  
-                    echo "Numeric Score: $numericScore, <br>";
+                    return $numericScore;
                 };
 				//This function Scores the complexity of the user password
                 function complexity($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5) {
-                    GLOBAL $complexScore;
+                    $complexScore = 0;
 					if (preg_match_all('/[\'()^&$%£*!}{#@~?><>,|=_+¬-]/', $userPassword)) {   
 
                         if (!preg_match_all('/[\'()^&$%£*!}{#@~?><>,|=_+¬-]/', $userPassword)) {    
@@ -162,11 +139,11 @@
                             $complexScore += $Score5;
                         }   
                     } 
-                    echo "Complex Score: $complexScore, <br>";
+                    return $complexScore;
                 };
               //This function Scores the number of repeating charaters in the user password
 				function repeating($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5){
-					GLOBAL $repeatingScore;
+					$repeatingScore = 0;
 					$count = 0;
 					
 					for($i = 0; $i < strlen($userPassword); $i++){
@@ -201,11 +178,11 @@
 						$repeatingScore += $Score5;
 					}
 					
-					echo "Repeating Score: $repeatingScore From $count, <br>";
+					return $repeatingScore;
 				}
 				//This function Scores the number of consecutive charagets in the user password
 				function consecutive($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5){
-					GLOBAL $consecutiveScore;
+					$consecutiveScore = 0;
 					$file = file("Pattern.txt");
 					$items = count($file); 
   
@@ -217,8 +194,7 @@
 							$consecutiveScore += 1;;
 						}
 					}
-					echo "Consecutive Score: $consecutiveScore<br> ";
-					echo "-$userPassword-,";
+					return $consecutiveScore;
 				}
 				
 				//Main function that calls all functuins above
@@ -232,17 +208,24 @@
 				
 
 					//call functions
-					length($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5);
-					capitals($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5);
-					lower($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5);
-					numbers($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5);
-					complexity($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5);     
-					repeating($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5);
-					consecutive($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5);
+					$lengthScore = length($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5);
+					$capitalScore = capitals($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5);
+					$lowerScore = lower($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5);
+					$numericScore = numbers($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5);
+					$complexScore = complexity($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5);     
+					$repeatingScore = repeating($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5);
+					$consecutiveScore = consecutive($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5);
+
+                    $scores = array(
+                        'lengthScore' => $lengthScore,
+                        'capitalScore' => $capitalScore,
+                        'lowerScore' => $lowerScore,
+                        'numericScore' => $numericScore,
+                        'complexScore' => $complexScore,
+                        'repeatingScore' => $repeatingScore,
+                        'consecutiveScore' => $consecutiveScore
+                    );
+                    return $scores;
 				}
-            }       
+            
         ?>
-
-    </body>
-
-</html>

@@ -1,37 +1,63 @@
-<html>
-    <body>
+
         <?php
-            session_start();
+            header("Access-Control-Allow-Origin: *");
+            header("Content-Type: application/json; charset=UTF-8");
+            header("Access-Control-Allow-Methods: POST");
+            header("Access-Control-Max-Age: 3600");
+            header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-
-
-            include 'Password_Strength.php';
-			include 'dictionary.php';
-			include 'Password_Reuse.php';
+            require 'Password_Strength.php';
+			require 'dictionary.php';
+			require 'Password_Reuse.php';
 			
-            $userpassword = $_POST['password'];
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            if (isset($_SESSION['user_id'])) {
-				$id = $_SESSION['user_id'];
+                if(isset($_POST['password'])){
+                    $userpassword = $_POST['password'];
+
+                    if (isset($_POST['user_id'])) {
+                        $id = $_POST['user_id'];
+                        passwordReuse($id, $userpassword);
+                    }
+    
+                    $scores = PasswordCheck($userpassword);
+                    $found = checkDict($userpassword);
+    
+                   // echo $userpassword;
+                    $response = array(
+                        'scores' => array(
+                                'lengthScore' => $scores['lengthScore'],
+                                'capitalScore' => $scores['capitalScore'],
+                                'lowerScore' => $scores['lowerScore'],
+                                'numericScore' => $scores['numericScore'],
+                                'complexScore' => $scores['complexScore'],
+                                'repeatingScore' => $scores['repeatingScore'],
+                                'consecutiveScore' => $scores['consecutiveScore'],
+                        ),
+                        'dict' => array(
+                            'exactMatch' => $found['exactMatch'],
+                            'wordsInDict' => $found['wordsInDict']
+                        )
+                    );
+                    $post_data = json_encode($response);
+                    echo $post_data;
+                }else{
+                    $response = array(
+                        'message' => 'No Password Entered'
+                    );
+                    echo json_encode($response);
+                }
+                
+            }else{
+                $response = array(
+                    'message' => 'Inavlid Request'
+                );
+                echo json_encode($response);
             }
-
-             
-
-			if (isset($_SESSION['valid_user'])) {
-				passwordReuse($id, $userpassword);
-            }
-
-            PasswordCheck($userpassword);
-			
-			
-            checkDict($userpassword);
-			
-			
-			echo "*$lengthScore*";
-			echo "-$userpassword-,<br>";  
+            
+            
                       
         ?>
-    </body>
-</html> 
+
 
 
