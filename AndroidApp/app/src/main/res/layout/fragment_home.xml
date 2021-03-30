@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
         android:text="@string/homePasswordPrompt"
+        android:textAlignment="center"
         android:textColor="?attr/colorOnPrimary"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="106dp"
+        android:autofillHints="AUTOFILL_HINT_PASSWORD"
         android:ems="10"
         android:hint="@string/homePasswordPrompt"
         android:inputType="textPassword"
@@ -44,6 +46,31 @@
         android:textColor="?attr/colorPrimaryVariant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/homeResultsHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="177dp"
+        android:layout_marginTop="284dp"
+        android:text="@string/homeResultsHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/passResults"
+        android:layout_width="328dp"
+        android:layout_height="348dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="344dp"
+        android:text="@string/homeResultsField"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
