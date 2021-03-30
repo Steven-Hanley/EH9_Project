@@ -1,9 +1,12 @@
 package com.eh9.eh9project
 
+import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
@@ -38,6 +41,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_account, R.id.navigation_settings))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        postVolley()
     }
 
     fun postVolley() {
@@ -52,6 +56,8 @@ class MainActivity : AppCompatActivity() {
                             var strResp = response.toString()
                             Log.d("API Testing", strResp)
                             //API Response is received here
+                            val passResults = findViewById<TextView>(R.id.passResults)
+                            passResults.text = strResp
                             //TODO: Handle API Data and convert the response to a usable format in order to give advice and build radar graph
                         },
                         Response.ErrorListener { error ->
