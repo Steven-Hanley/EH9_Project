@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorPrimaryVariant"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".HomeFragment">
 
     <TextView
         android:id="@+id/passwordPromptText"
@@ -28,6 +28,7 @@
         android:ems="10"
         android:hint="@string/homePasswordPrompt"
         android:inputType="textPassword"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
