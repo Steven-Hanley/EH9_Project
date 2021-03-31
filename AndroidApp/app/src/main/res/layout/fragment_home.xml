@@ -37,13 +37,12 @@
         app:layout_constraintTop_toTopOf="parent" />
     <!-- TODO fix night theme as at the minute it seems the app bar and button colour dont use the one defined in theme -->
     <Button
+        style="@style/CustomButtons"
         android:id="@+id/submitPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="187dp"
-        android:background="?attr/colorSecondaryVariant"
         android:text="@string/homeSubmitButtonText"
-        android:textColor="?attr/colorPrimaryVariant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,16 +60,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/passResults"
-        android:layout_width="328dp"
-        android:layout_height="348dp"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="344dp"
-        android:text="@string/homeResultsField"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        tools:layout_editor_absoluteX="-68dp"
+        tools:layout_editor_absoluteY="16dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/passResults"
+                android:layout_width="328dp"
+                android:layout_height="348dp"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="344dp"
+                android:text="@string/homeResultsField"
+                android:textAlignment="center" />
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

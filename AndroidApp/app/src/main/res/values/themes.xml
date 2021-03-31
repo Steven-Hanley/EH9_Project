@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.EH9Project" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
@@ -7,7 +7,7 @@
         <item name="colorOnPrimary">@color/lightPrimaryText</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/lightAccents</item>
-        <item name="colorSecondaryVariant">@color/lightButtons</item>
+        <item name="colorSecondaryVariant">@color/lightAccents</item>
         <item name="colorOnSecondary">@color/lightSecondaryText</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/lightAccents</item>

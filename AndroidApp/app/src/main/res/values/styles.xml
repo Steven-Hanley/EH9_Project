@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomButtons" parent="Theme.EH9Project">
+        <item name="android:background">@drawable/custom_button</item>
+        <item name="android:backgroundTint">?attr/colorSecondaryVariant</item>
+        <item name="android:textColor">?attr/colorPrimaryVariant</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+
+</resources>
