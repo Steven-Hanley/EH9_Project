@@ -9,23 +9,23 @@
 						//check password ageainst criteria
                         if (strlen($userPassword) <= 7) {
 
-                            $lengthScore += $Score1;  
+                            $lengthScore = $Score1;  
                         }  
                         else if (strlen($userPassword) >= 8 && strlen($userPassword) <=10) {
 
-                            $lengthScore += $Score2;    
+                            $lengthScore = $Score2;    
                         }
 						else if (strlen($userPassword) >= 11 && strlen($userPassword) <=14) {
 
-                            $lengthScore += $Score3;    
+                            $lengthScore = $Score3;    
                         }
 						else if (strlen($userPassword) >= 15 && strlen($userPassword) <=19) {
 
-                            $lengthScore += $Score4;    
+                            $lengthScore = $Score4;    
                         }
                         else if (strlen($userPassword) >= 20)  {
                         
-                            $lengthScore += $Score5;
+                            $lengthScore = $Score5;
                         }                           
                      }  
 					//output Score
@@ -41,19 +41,19 @@
                         }  
                         else if (preg_match_all('/[A-Z]/', $userPassword) == 1) {
 
-                            $capitalScore += $Score2;
+                            $capitalScore = $Score2;
                         }  
                         else if (preg_match_all('/[A-Z]/', $userPassword) >= 2 && preg_match_all('/[A-Z]/', $userPassword) <= 3) {
 
-                            $capitalScore += $Score3;
+                            $capitalScore = $Score3;
                         }    
 						else if (preg_match_all('/[A-Z]/', $userPassword) >= 4 && preg_match_all('/[A-Z]/', $userPassword) <= 5) {
 
-                            $capitalScore += $Score4;
+                            $capitalScore = $Score4;
                         }   
                         else if (preg_match_all('/[A-Z]/', $userPassword) >= 6) {
 
-                            $capitalScore += $Score5;
+                            $capitalScore = $Score5;
 
                         }   
                     }  
@@ -62,26 +62,26 @@
 				//This function Scores the number of lower case letters in the user password
                 function lower($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5) {
                     $lowerScore = 0;
-					if (preg_match('/[A-Z]/', $userPassword)) {
+					if (preg_match('/[a-z]/', $userPassword)) {
                         if (preg_match_all('/[a-z]/', $userPassword) <= 3) {
 
-                            $capitalScore = $Score1;                            
+                            $lowerScore = $Score1;                            
                         }  
                         else if (preg_match_all('/[a-z]/', $userPassword) >= 4 && preg_match_all('/[a-z]/', $userPassword) == 6) {
 
-							$capitalScore = $Score2;                            
+							$lowerScore = $Score2;                            
 						}
                         else if (preg_match_all('/[a-z]/', $userPassword) >= 7 && preg_match_all('/[a-z]/', $userPassword) <= 9) {
 
-                            $capitalScore = $Score3;    
+                            $lowerScore = $Score3;    
                         }   
                         else if (preg_match_all('/[a-z]/', $userPassword) >= 10 && preg_match_all('/[a-z]/', $userPassword) <= 14) {
 
-                            $capitalScore = $Score4;    
+                            $lowerScore = $Score4;    
                         }   						
                         else if (preg_match_all('/[a-z]/', $userPassword) >= 15) {
 
-                            $capitalScore = $Score5;    
+                            $lowerScore = $Score5;    
                         }   
                     }  
                     return $lowerScore;
@@ -96,7 +96,7 @@
                         }
 						else if (preg_match_all('/[0-9]/', $userPassword) == 3) {
 
-                            $numericScore += $Score2;
+                            $numericScore = $Score2;
                         } 
                         else if (preg_match_all('/[0-9]/', $userPassword) >= 4 && preg_match_all('/[0-9]/', $userPassword) <= 5) {
 
@@ -116,7 +116,7 @@
 				//This function Scores the complexity of the user password
                 function complexity($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5) {
                     $complexScore = 0;
-					if (preg_match_all('/[\'()^&$%£*!}{#@~?><>,|=_+¬-]/', $userPassword)) {   
+					if (preg_match_all('/[\'()^&$.%£*!}{#@~?><>,|=_+¬-]/', $userPassword)) {   
 
                         if (!preg_match_all('/[\'()^&$%£*!}{#@~?><>,|=_+¬-]/', $userPassword)) {    
                             
@@ -158,7 +158,7 @@
 					}
 					if($count > 4){
 					
-						$repeatingScore += $Score1;
+						$repeatingScore = $Score1;
 					}
 					
 					else if($count == 4){
@@ -200,7 +200,7 @@
 				//Main function that calls all functuins above
 				function PasswordCheck($userPassword){                              
 					//initialise variables
-					$Score1 = -1;
+					$Score1 = 0;
 					$Score2 = 1;
 					$Score3 = 2;
 					$Score4 = 4;
