@@ -15,6 +15,8 @@ import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet
 import java.util.ArrayList
 
@@ -38,7 +40,7 @@ class RadarTest: AppCompatActivity() {
         //configure radar graph
         chart.setBackgroundColor(Color.rgb(60, 65, 82))
         chart.description.isEnabled = false
-        chart.webLineWidth(1f)
+        chart.webLineWidth = 1f
         //useful to export graph
         chart.webColor = WHITE
         chart.webLineWidth = 1f
@@ -52,18 +54,18 @@ class RadarTest: AppCompatActivity() {
 
         //define axis
         xAxis  = chart.xAxis
-        xAxis.textSize(9f)
-        xAxis.yOffset(0)
-        xAxis.xOffset(0)
-        xAxis.valueFormatter (IndexAxisValueFormatter {
+        xAxis.textSize = 10f
+        xAxis.yOffset = 0F
+        xAxis.xOffset = 0F
+        xAxis.valueFormatter = object : IndexAxisValueFormatter() {
 
             val qualities: Array<String> = arrayOf("Length", "Capitals", "Consecutive", "Complexity", "Repeating", "Numbers", "Lowercase")
 
-            fun getFormattedValue(value:Float, axis:AxisBase): String {
+            override fun getFormattedValue(value:Float, axis:AxisBase): String {
                 return qualities[value.toInt() % qualities.size]
             }
 
-        })
+        } as ValueFormatter?
         xAxis.textColor = WHITE
 
         yAxis = chart.yAxis
@@ -76,18 +78,15 @@ class RadarTest: AppCompatActivity() {
         //configure legend for radar graph
         val l = chart.legend
         l.textSize = 15f
-        l.verticalAlignment(Legend.LegendVerticalAlignment.TOP)
-        l.horizontalAlignment(Legend.LegendHorizontalAlignment.CENTER)
-        l.orientation(Legend.LegendOrientation.HORIZONTAL)
+        l.verticalAlignment = Legend.LegendVerticalAlignment.TOP
+        l.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
+        l.orientation = Legend.LegendOrientation.HORIZONTAL
         l.setDrawInside(false)
         l.xEntrySpace = 7f
         l.yEntrySpace = 5f
         l.textColor = WHITE
     }
 
-    private fun IndexAxisValueFormatter(strings: () -> Unit): Any {
-        return true
-    }
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -117,7 +116,7 @@ class RadarTest: AppCompatActivity() {
         val employee1:ArrayList<RadarEntry> = ArrayList()
         val employee2:ArrayList<RadarEntry> = ArrayList()
 
-        NB_QUALITIES.forEach { ->
+        for (i in 0 .. NB_QUALITIES){
             val val1 = (Math.random()).toInt() * MAX +MIN
             employee1.add(RadarEntry(val1))
 
@@ -158,58 +157,6 @@ class RadarTest: AppCompatActivity() {
     }
 
 
-}
-
-private fun Int.forEach(any: Any) {
-
-}
-
-class string {
-
-}
-
-
-private fun Any.orientation(horizontal: Legend.LegendOrientation) {
-
-}
-
-
-
-private fun Any.horizontalAlignment(center: Legend.LegendHorizontalAlignment) {
-
-}
-
-private fun Any.verticalAlignment(top: Legend.LegendVerticalAlignment) {
-
-}
-
-
-
-private fun XAxis.textColor(white: Int) {
-
-}
-
-private fun XAxis.valueFormatter(indexAxisValueFormatter: Any) {
-
-}
-
-private fun XAxis.xOffset(i: Int) {
-
-
-}
-
-private fun XAxis.yOffset(i: Int) {
-
-    return
-
-}
-
-private fun XAxis.textSize(fl: Float) {
-
-}
-
-private fun RadarChart.webLineWidth(fl: Float) {
-    return
 }
 
 

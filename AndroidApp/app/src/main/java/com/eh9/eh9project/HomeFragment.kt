@@ -43,6 +43,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
 
         }
+
+
     }
 
     //This Function Sends the request to the API and retrieves the results after the results are received sends the function that prints the results the results of the generate advice function (Steven)
@@ -53,16 +55,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val requestBody = "password=$password&user_id=$id"
         val stringReq : StringRequest =
             object : StringRequest(
-                    Method.POST, url,
-                    Response.Listener { response ->
-                        // response
-                        val results = Gson().fromJson(response.toString(), apiResults::class.java)
-                        printResults(generateAdvice(results))
-                    },
-                    Response.ErrorListener { error ->
-                        Log.d("API Testing", "error => $error")
-                        printResults("An Error Has Occured")
-                    }
+                Method.POST, url,
+                Response.Listener { response ->
+                    // response
+                    val results = Gson().fromJson(response.toString(), apiResults::class.java)
+                    printResults(generateAdvice(results))
+                },
+                Response.ErrorListener { error ->
+                    Log.d("API Testing", "error => $error")
+                    printResults("An Error Has Occured")
+                }
             ){
                 override fun getBody(): ByteArray {
                     return requestBody.toByteArray(Charset.defaultCharset())

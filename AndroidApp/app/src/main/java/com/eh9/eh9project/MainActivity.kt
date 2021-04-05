@@ -56,6 +56,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+
     //Saves Account details into shared preferences so they can be persistent (Steven)
     internal fun saveAccount(savedUser: user){
         val sharedPreferences = getSharedPreferences("App_Settings", Context.MODE_PRIVATE)
