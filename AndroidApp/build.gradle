@@ -4,8 +4,7 @@ buildscript {
     repositories {
         google()
         jcenter()
-
-
+        maven {url 'https://github.com/patrickfav/bcrypt'}
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.3"
@@ -21,7 +20,6 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
-        maven {url 'https://github.com/patrickfav/bcrypt'}
     }
 }
 
