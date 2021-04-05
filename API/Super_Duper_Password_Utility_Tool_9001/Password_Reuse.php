@@ -1,15 +1,12 @@
 <?php
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
 
-    $conn = null;
+    GLOBAL $conn;
 
     /**
      * method for fetching the connection and assigning $conn
      */
     function getConnection() {
-
+        global $conn;
         $host = "***REMOVED***";
         $dbase = "***REMOVED***";
         $username = "***REMOVED***";
@@ -36,20 +33,19 @@
      * checking if a valid user id and password exists
      */
     function checkPasswordExists($userID, $userPassword) {
+        global $conn;
+        $usedBefore = false;
+        //echo 'checking passwords';
 
         // first, check for a valid user id
-        $sql = "SELECT * FROM Passwords
-        WHERE USER_ID = ?";
-
+        $sql = "SELECT * FROM Passwords WHERE USER_ID = ?";
         // error statements
         if (!($stmt = $conn->prepare($sql))) {
             //echo "Prepare failed ";
         }
-
         if (!($stmt->bindParam(1, $userID))) {
          //   echo "Binding parameters 1 failed "; echo "<br>";
         } 
-        
         if (!($stmt->execute())) {
           //  echo "Execute failed "; echo "<br>";
             print_r($stmt->errorInfo());
@@ -57,37 +53,29 @@
 
 
         // fetch the record
-        $num = $stmt->fetch(PDO::FETCH_ASSOC);
-        
+        $num = $stmt->fetchAll();        
         // check if that account exists
         if (is_array($num)) {
-            // compare the entered password to that password record
-            if (password_verify($userPassword, $num['password'])) {
-                // passwords match
-              //  echo "Password has been used before."; echo "<br>";
-            } else {
-                // passwords don't match
-               // echo "Password has not been used before."; echo "<br>";
-
-                // insert password data under that user id
-                if (insertPasswordData($userID, $userPassword)) {
-                    // success
-                  //  echo "you can insert the password."; echo "<br>";
-
-                } else {
-                    // failure
-                  //  echo "you can't insert the password here."; echo "<br>";
-                }
+            foreach ($num as $item){
+                if (password_verify($userPassword, $item['password'])) {
+                    //echo 'match';
+                    $usedBefore = true;
+                    return $usedBefore;
+                }                        
             }
+            insertPasswordData($userID, $userPassword);
+            return $usedBefore;
         } else {
-            // no entries
-         //   echo "No entries."; echo "<br>";
-
+                insertPasswordData($userID, $userPassword);
+               //echo "No entries."; echo "<br>";
+               return $usedBefore;
         }
     }
+            
+
 
     function insertPasswordData($userID, $userPassword) {
-
+        global $conn;
         $sql = "INSERT INTO Passwords (USER_ID, password) 
                 VALUES (?, ?)";
 
@@ -112,6 +100,7 @@
     // runs everything
     function passwordReuse($userID, $userPassword) {
         getConnection();
-        checkPasswordExists($userID, $userPassword);
+        $history = checkPasswordExists($userID, $userPassword);
+        return $history;
     }
 ?>

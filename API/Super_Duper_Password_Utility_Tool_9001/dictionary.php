@@ -52,8 +52,12 @@
 
     function dictionaryCheck($password) {
         $file = file_get_contents("100k-most-used-passwords-NCSC.txt");
-        $password2 = preg_replace("/[^a-zA-Z]/", "", $password);
-        $pos = stristr($file, $password2);
+        $password2 = (string)preg_replace("/[^a-zA-Z]/", "", $password); 
+        $password2 = (string)$password2;
+        $pos = false;
+        if ($password2 != "") {
+            $pos = stristr($file, $password2);
+        }
 
         if ($pos === false) {
             return false;

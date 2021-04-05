@@ -13,6 +13,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        //Checks the apps current theme and sets the button group to show the theme as active (Steven)
         val themeButtons = getView()?.findViewById<com.google.android.material.button.MaterialButtonToggleGroup>(R.id.btg_theme)
         val preferences = activity?.getSharedPreferences("App_Settings", Context.MODE_PRIVATE)
         when(preferences?.getInt("theme", AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)){
@@ -21,7 +22,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             2 -> themeButtons?.check(R.id.btnDark)
         }
 
-
+        //On Click Listener for button group when pressed checks what button is pressed and sets the theme to that button also runs the activity funtion to save theme (Steven)
         themeButtons?.addOnButtonCheckedListener { _, selectedBtnId, isChecked ->
             if (isChecked) {
                 val theme = when (selectedBtnId) {
