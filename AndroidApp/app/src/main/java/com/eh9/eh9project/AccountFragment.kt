@@ -110,24 +110,22 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
     }
 
     //This function will recieve the info from the API and firstly make sure its a real user before secondly checking to see if the account password matches the password the user sent if it is runs login protocol (Steven)
-    fun verifyUser(results: user){
-        if(results.user_id == null){
-            Toast.makeText(context, "Invalid Login Details", Toast.LENGTH_SHORT).show()
+    fun verifyUser(results: user) = if(results.user_id == null){
+        Toast.makeText(context, "Invalid Login Details", Toast.LENGTH_SHORT).show()
+    }else{
+        val password = view?.findViewById<EditText>(R.id.passwordLogin)?.text.toString()
+
+        if (BCrypt.verifyer().verify(password.toByteArray(), results.password?.toByteArray()).verified){
+            results.password = null
+            Toast.makeText(context, "Successfully Logged In", Toast.LENGTH_SHORT).show()
+            (activity as MainActivity).appUser.user_id = results.user_id
+            (activity as MainActivity).appUser.username = results.username
+            (activity as MainActivity).saveAccount(results)
+            checkStatus(results)
         }else{
-            val password = view?.findViewById<EditText>(R.id.passwordLogin)?.text.toString()
-
-            if (BCrypt.verifyer().verify(password.toByteArray(), results.password?.toByteArray()).verified){
-                results.password = null
-                Toast.makeText(context, "Successfully Logged In", Toast.LENGTH_SHORT).show()
-                (activity as MainActivity).appUser.user_id = results.user_id
-                (activity as MainActivity).appUser.username = results.username
-                (activity as MainActivity).saveAccount(results)
-                checkStatus(results)
-            }else{
-                Toast.makeText(context, "Invalid Login Details", Toast.LENGTH_SHORT).show()
-            }
-
+            Toast.makeText(context, "Invalid Login Details", Toast.LENGTH_SHORT).show()
         }
+
     }
 
 }

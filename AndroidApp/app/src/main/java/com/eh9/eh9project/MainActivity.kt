@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
 
     //Default App user account has to be global to be accessed across fragments
     var appUser = user(0, "", "")
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
