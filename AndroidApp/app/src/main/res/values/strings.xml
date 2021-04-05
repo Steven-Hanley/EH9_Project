@@ -22,5 +22,7 @@
     <string name="themeBtnDefault">System</string>
     <string name="themeBtnDark">Dark</string>
     <string name="themeBtnLight">Light</string>
+    <string name="refresh_values">Refresh Values</string>
+    <string name="toggle_values">Toggle Values</string>
 
 </resources>
