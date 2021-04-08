@@ -196,14 +196,14 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             score.add(RadarEntry(470F))
 
             val radardata = RadarDataSet(score, "Password Score")
-            radardata.color = Color.RED
-            radardata.fillColor = Color.RED
+            radardata.color = Color.WHITE
+            radardata.fillColor = Color.WHITE
             radardata.fillAlpha = 100
             radardata.setDrawFilled(true)
             radardata.lineWidth = 2f
             radardata.setDrawHighlightIndicators(false)
             radardata.isDrawHighlightCircleEnabled = true
-            radardata.valueTextColor = Color.RED
+            radardata.valueTextColor = Color.WHITE
 
             val newRadarData = RadarData()
             newRadarData.addDataSet(radardata)
