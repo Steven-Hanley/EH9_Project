@@ -185,13 +185,13 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             chart.animateXY(1000, 1000, Easing.EaseInOutQuad, Easing.EaseInOutQuad)
 
             val score: ArrayList<RadarEntry> = ArrayList()
-            score.add(RadarEntry(420F))             //length
-            score.add(RadarEntry(450F))             //Capitals
-            score.add(RadarEntry(588F))             //Consecutive
-            score.add(RadarEntry(640F))             //Complexity
-            score.add(RadarEntry(550F))             //Repeating
-            score.add(RadarEntry(630F))             //Numbers
-            score.add(RadarEntry(470F))             //Lowercase
+            score.add(RadarEntry(1F))             //length
+            score.add(RadarEntry(5F))             //Capitals
+            score.add(RadarEntry(3F))             //Consecutive
+            score.add(RadarEntry(5F))             //Complexity
+            score.add(RadarEntry(4F))             //Repeating
+            score.add(RadarEntry(5F))             //Numbers
+            score.add(RadarEntry(5F))             //Lowercase
 
             val radardata = RadarDataSet(score, "Password Score")
             radardata.color = Color.WHITE
