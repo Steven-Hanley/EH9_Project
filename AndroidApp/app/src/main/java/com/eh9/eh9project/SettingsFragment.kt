@@ -3,10 +3,11 @@ package com.eh9.eh9project
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.*
+import android.view.View.inflate
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.res.ColorStateListInflaterCompat.inflate
+import androidx.core.content.res.ComplexColorCompat.inflate
 import androidx.fragment.app.Fragment
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.RadarChart
@@ -21,8 +22,8 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet
 import java.util.ArrayList
-
-
+import android.view.MenuItem
+/*
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     private var MAX = 12f                       //max value
@@ -34,7 +35,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        chart = view?.findViewById(R.id.chart)!!
+        chart = view.findViewById(R.id.chart)!!
 
         //configure radar graph
         chart.setBackgroundColor(Color.rgb(60, 65, 82))
@@ -49,7 +50,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         setData()
 
         //animate the chart
-        chart.animateXY(1400, 1400, Easing.EaseInOutQuad)
+        chart.animateXY(1000, 1000, Easing.EaseInOutQuad, Easing.EaseInOutQuad)
 
         //define axis
         xAxis  = chart.xAxis
@@ -65,8 +66,8 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             }
 
         } as ValueFormatter?
-        xAxis.textColor = Color.WHITE
 
+        xAxis.textColor = Color.WHITE
         yAxis = chart.yAxis
         yAxis.setLabelCount(NB_QUALITIES, false)
         yAxis.textSize = 9f
@@ -86,8 +87,13 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         l.textColor = Color.WHITE
     }
 
+/*
+    override fun OnCreateOptionsMenu (menu: Menu) {
+        inflater.inflate(R.menu.radargraph, menu)
+        return super.onCreateOptionsMenu(menu)
 
-
+    }
+*/
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
@@ -107,38 +113,32 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setData() {
+     fun setData() {
         val employee1: ArrayList<RadarEntry> = ArrayList()
-        val employee2: ArrayList<RadarEntry> = ArrayList()
 
-        for (i in 0 .. 1000){
-            val val1 = (Math.random()).toInt() * MAX +MIN
-            employee1.add(RadarEntry(val1))
+         val val1 = (Math.random()).toInt() * MAX +MIN
+         employee1.add(RadarEntry(val1))
 
-            val val2 = (Math.random()).toInt() * MAX +MIN
-            employee2.add(RadarEntry(val2))
-        }
 
-        //create two radar data sets objects with these data
+
+
+
+
+        //create radar data sets objects with these data
         val set1 = RadarDataSet(employee1, "Employee A")
         set1.color = Color.RED
         set1.fillColor = Color.RED
+        set1.fillAlpha = 100
         set1.setDrawFilled(true)
         set1.lineWidth = 2f
         set1.setDrawHighlightIndicators(false)
-        set1.isDrawHighlightCircleEnabled
-
-        val set2 = RadarDataSet(employee1, "Employee B")
-        set1.color = Color.RED
-        set1.fillColor = Color.RED
-        set1.setDrawFilled(true)
-        set1.lineWidth = 2f
-        set1.setDrawHighlightIndicators(false)
-        set1.isDrawHighlightCircleEnabled
+        set1.isDrawHighlightCircleEnabled = true
 
         val sets: ArrayList<IRadarDataSet> = ArrayList()
         sets.add(set1)
-        sets.add(set2)
+
+
+
 
         // create Radar Data object which will be added to radar chart
         val data = RadarData(sets)
@@ -146,10 +146,94 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         data.setDrawValues(false)
         data.setValueTextColor(Color.WHITE)
 
+
+
+
+
         chart.data = data
         chart.invalidate()
 
     }
+
+
+
+*/
+
+    class SettingsFragment : Fragment(R.layout.fragment_settings) {
+
+        private var MAX = 12f                       //max value
+        private var MIN = 1f                       //min value
+        var NB_QUALITIES = 5                        //nb qualities for Radar Chart
+        lateinit var chart: RadarChart
+        lateinit var xAxis: XAxis
+        lateinit var yAxis: YAxis
+        lateinit var radarEntry: RadarEntry
+
+        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+            chart = view.findViewById(R.id.chart)!!
+
+            //configure radar graph
+            chart.setBackgroundColor(Color.rgb(60, 65, 82))
+            chart.description.isEnabled = false
+            chart.webLineWidth = 1f
+            //useful to export graph
+            chart.webColor = Color.WHITE
+            chart.webLineWidth = 1f
+            chart.webColorInner = Color.WHITE
+            chart.webAlpha = 100
+
+            //animate the chart
+            chart.animateXY(1000, 1000, Easing.EaseInOutQuad, Easing.EaseInOutQuad)
+
+            val score: ArrayList<RadarEntry> = ArrayList()
+            score.add(RadarEntry(420F))
+            score.add(RadarEntry(450F))
+            score.add(RadarEntry(588F))
+            score.add(RadarEntry(640F))
+            score.add(RadarEntry(550F))
+            score.add(RadarEntry(630F))
+            score.add(RadarEntry(470F))
+
+            val radardata = RadarDataSet(score, "Password Score")
+            radardata.color = Color.RED
+            radardata.fillColor = Color.RED
+            radardata.fillAlpha = 100
+            radardata.setDrawFilled(true)
+            radardata.lineWidth = 2f
+            radardata.setDrawHighlightIndicators(false)
+            radardata.isDrawHighlightCircleEnabled = true
+            radardata.valueTextColor = Color.RED
+
+            val newRadarData = RadarData()
+            newRadarData.addDataSet(radardata)
+
+            val qualities: Array<String> = arrayOf("Length", "Capitals", "Consecutive", "Complexity", "Repeating", "Numbers", "Lowercase")
+            xAxis = chart.xAxis
+            xAxis.valueFormatter = IndexAxisValueFormatter(qualities)
+            chart.data = newRadarData
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 //
@@ -177,4 +261,4 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 //        }
 //    }
 
-}
+
