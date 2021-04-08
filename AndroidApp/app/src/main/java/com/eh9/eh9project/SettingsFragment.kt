@@ -161,13 +161,9 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
     class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
-        private var MAX = 12f                       //max value
-        private var MIN = 1f                       //min value
-        var NB_QUALITIES = 5                        //nb qualities for Radar Chart
         lateinit var chart: RadarChart
         lateinit var xAxis: XAxis
-        lateinit var yAxis: YAxis
-        lateinit var radarEntry: RadarEntry
+
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -183,17 +179,19 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             chart.webColorInner = Color.WHITE
             chart.webAlpha = 100
 
+
+
             //animate the chart
             chart.animateXY(1000, 1000, Easing.EaseInOutQuad, Easing.EaseInOutQuad)
 
             val score: ArrayList<RadarEntry> = ArrayList()
-            score.add(RadarEntry(420F))
-            score.add(RadarEntry(450F))
-            score.add(RadarEntry(588F))
-            score.add(RadarEntry(640F))
-            score.add(RadarEntry(550F))
-            score.add(RadarEntry(630F))
-            score.add(RadarEntry(470F))
+            score.add(RadarEntry(420F))             //length
+            score.add(RadarEntry(450F))             //Capitals
+            score.add(RadarEntry(588F))             //Consecutive
+            score.add(RadarEntry(640F))             //Complexity
+            score.add(RadarEntry(550F))             //Repeating
+            score.add(RadarEntry(630F))             //Numbers
+            score.add(RadarEntry(470F))             //Lowercase
 
             val radardata = RadarDataSet(score, "Password Score")
             radardata.color = Color.WHITE
