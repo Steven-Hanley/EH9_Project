@@ -10,6 +10,8 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -19,12 +21,22 @@ import java.nio.charset.Charset
 
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
+    lateinit var fragmentTransaction: FragmentTransaction
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         //Allows the pass results to be scrollable in case results text is too big (Steven)
         val passResults = view.findViewById<TextView>(R.id.passResults)
         passResults?.movementMethod = ScrollingMovementMethod()
+
+        val radargraph = getView()?.findViewById<Button>(R.id.fuckyou)
+        radargraph?.setOnClickListener(View.OnClickListener {
+            fun OnClick (view: View) {
+                val fr = manager.beginTransaction()
+                fr.replace(R.id.nav_host_fragment_container, RadarFragment())
+                fr.commit()
+            }
+        })
 
         //Sets the listener for analyse button and when clicked retrieves the text from pass field and sends it to the api removes the text and shows loading thing also lowers keyboard (Steven)
         val submitButton = getView()?.findViewById<Button>(R.id.submitPassword)
@@ -167,4 +179,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
+
+
 }

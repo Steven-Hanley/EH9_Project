@@ -31,11 +31,16 @@ import java.nio.charset.Charset
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var fragmentTransaction: FragmentTransaction
     //Default App user account has to be global to be accessed across fragments
     var appUser = user(0, "", "")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.add(R.id.nav_host_fragment_container, HomeFragment())
+        fragmentTransaction.commit()
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
         val appBarConfiguration = AppBarConfiguration(setOf(
