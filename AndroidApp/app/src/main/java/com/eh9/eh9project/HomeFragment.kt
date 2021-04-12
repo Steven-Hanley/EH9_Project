@@ -10,8 +10,8 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.fragment.findNavController
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -29,14 +29,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val passResults = view.findViewById<TextView>(R.id.passResults)
         passResults?.movementMethod = ScrollingMovementMethod()
 
-        val radargraph = getView()?.findViewById<Button>(R.id.fuckyou)
-        radargraph?.setOnClickListener(View.OnClickListener {
-            fun OnClick (view: View) {
-                val fr = manager.beginTransaction()
-                fr.replace(R.id.nav_host_fragment_container, RadarFragment())
-                fr.commit()
-            }
-        })
+
 
         //Sets the listener for analyse button and when clicked retrieves the text from pass field and sends it to the api removes the text and shows loading thing also lowers keyboard (Steven)
         val submitButton = getView()?.findViewById<Button>(R.id.submitPassword)
@@ -67,16 +60,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val requestBody = "password=$password&user_id=$id"
         val stringReq : StringRequest =
             object : StringRequest(
-                Method.POST, url,
-                Response.Listener { response ->
-                    // response
-                    val results = Gson().fromJson(response.toString(), apiResults::class.java)
-                    printResults(generateAdvice(results))
-                },
-                Response.ErrorListener { error ->
-                    Log.d("API Testing", "error => $error")
-                    printResults("An Error Has Occured")
-                }
+                    Method.POST, url,
+                    Response.Listener { response ->
+                        // response
+                        val results = Gson().fromJson(response.toString(), apiResults::class.java)
+                        printResults(generateAdvice(results))
+                    },
+                    Response.ErrorListener { error ->
+                        Log.d("API Testing", "error => $error")
+                        printResults("An Error Has Occurred")
+                    }
             ){
                 override fun getBody(): ByteArray {
                     return requestBody.toByteArray(Charset.defaultCharset())
@@ -87,6 +80,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     //Generates the advice based on results received from the API and adds it all to string (Steven)  TODO:Make the Advice consisted across platfroms
     fun generateAdvice(results: apiResults): String {
+
+
+        results.scores?.let { (activity as MainActivity).updateRadar(it) }
+
         var advice = ""
         when (results.scores?.lengthScore){
             0 -> advice += "• This password is too short.\n"
@@ -172,6 +169,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val passResults = view?.findViewById<TextView>(R.id.passResults)
         passResults?.movementMethod = ScrollingMovementMethod()
         passResults?.text = advice
+
+
+        val radarGraph = view?.findViewById<Button>(R.id.fuckyou)
+        radarGraph?.visibility = View.VISIBLE
+        radarGraph?.setOnClickListener(View.OnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_radarFragment)
+        })
+
     }
 
     //Function for hiding keyboard (Steven)

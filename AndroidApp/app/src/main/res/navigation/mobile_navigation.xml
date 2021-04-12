@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_account"
             app:destination="@id/navigation_account" />
+        <action
+            android:id="@+id/action_navigation_home_to_radarFragment"
+            app:destination="@id/radarFragment" />
     </fragment>
 
     <fragment
@@ -30,4 +33,9 @@
         android:name="com.eh9.eh9project.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/radarFragment"
+        android:name="com.eh9.eh9project.RadarFragment"
+        android:label="fragment_radar"
+        tools:layout="@layout/fragment_radar" />
 </navigation>

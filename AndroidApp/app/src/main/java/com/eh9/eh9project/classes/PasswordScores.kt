@@ -1,6 +1,6 @@
 package com.eh9.eh9project.classes
 
-data class passwordScores(
+data class PasswordScores(
     var lengthScore: Int? = null,
     var capitalScore: Int? = null,
     var lowerScore: Int? = null,

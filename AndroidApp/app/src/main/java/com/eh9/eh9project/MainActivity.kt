@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
@@ -20,6 +21,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.eh9.eh9project.classes.PasswordScores
 import com.eh9.eh9project.classes.apiResults
 import com.eh9.eh9project.classes.user
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -30,17 +32,17 @@ import java.nio.charset.Charset
 
 
 class MainActivity : AppCompatActivity() {
-
-    lateinit var fragmentTransaction: FragmentTransaction
+    //lateinit var fragmentTransaction: FragmentTransaction
     //Default App user account has to be global to be accessed across fragments
     var appUser = user(0, "", "")
+    var passScores = PasswordScores(0,0,0,0,0,0,0)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.add(R.id.nav_host_fragment_container, HomeFragment())
-        fragmentTransaction.commit()
+//        fragmentTransaction = supportFragmentManager.beginTransaction()
+//        fragmentTransaction.add(R.id.nav_host_fragment_container, HomeFragment())
+//        fragmentTransaction.commit()
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
         val appBarConfiguration = AppBarConfiguration(setOf(
@@ -60,6 +62,7 @@ class MainActivity : AppCompatActivity() {
         //TODO Misc Settings for the app
 
     }
+
 
 
 
@@ -102,6 +105,10 @@ class MainActivity : AppCompatActivity() {
         val theme = sharedPreferences.getInt("theme", AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 
         AppCompatDelegate.setDefaultNightMode(theme)
+    }
+
+     fun updateRadar(retrievedScores: PasswordScores){
+        passScores = retrievedScores
     }
 
 

@@ -11,21 +11,22 @@
         android:id="@+id/passwordPromptText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="28dp"
         android:text="@string/homePasswordPrompt"
         android:textAlignment="center"
         android:textColor="?attr/colorOnPrimary"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- TODO fix night theme as at the minute it seems the app bar and button colour dont use the one defined in theme -->
     <EditText
         android:id="@+id/passwordSubmission"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="106dp"
+        android:layout_marginTop="80dp"
         android:autofillHints="AUTOFILL_HINT_PASSWORD"
         android:ems="10"
         android:hint="@string/homePasswordPrompt"
@@ -35,19 +36,19 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <!-- TODO fix night theme as at the minute it seems the app bar and button colour dont use the one defined in theme -->
+
+
     <Button
         android:id="@+id/submitPassword"
         style="@style/CustomButtons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="187dp"
+        android:layout_marginTop="140dp"
         android:text="@string/homeSubmitButtonText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/homeResultsHeader"
@@ -97,11 +98,15 @@
 
     <Button
         android:id="@+id/fuckyou"
+        style="@style/CustomButtons"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="256dp"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="196dp"
         android:text="@string/view_graph"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
