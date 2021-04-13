@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="564a74f3-ab1f-471d-be48-b53292ab638b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/EH9_Project.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/eh9/eh9project/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/eh9/eh9project/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/eh9/eh9project/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/eh9/eh9project/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/eh9/eh9project/RadarFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/eh9/eh9project/RadarFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/eh9/eh9project/SettingsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/eh9/eh9project/SettingsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/eh9/eh9project/classes/PasswordScores.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/eh9/eh9project/classes/PasswordScores.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/eh9/eh9project/classes/apiResults.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/java/com/eh9/eh9project/classes/apiResults.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/res/layout/fragment_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/res/layout/fragment_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidApp/app/src/main/res/navigation/mobile_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidApp/app/src/main/res/navigation/mobile_navigation.xml" afterDir="false" />
-    </list>
+    <list default="true" id="564a74f3-ab1f-471d-be48-b53292ab638b" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,9 +34,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="528" y="298" key="FileChooserDialogImpl" timestamp="1618234760288">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="573" y="309" key="FileChooserDialogImpl" timestamp="1618316556444">
+      <screen x="62" y="0" width="1858" height="1080" />
     </state>
     <state x="528" y="298" key="FileChooserDialogImpl/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1618234760288" />
+    <state x="573" y="309" key="FileChooserDialogImpl/62.0.1858.1080@62.0.1858.1080" timestamp="1618316556444" />
   </component>
 </project>

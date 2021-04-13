@@ -19,12 +19,13 @@
 
 
     <!-- Settings Strings -->
-    <string name="themeDescriptor">Choose Theme</string>
+    <string name="themeDescriptor">Theme: </string>
     <string name="themeBtnDefault">System</string>
     <string name="themeBtnDark">Dark</string>
     <string name="themeBtnLight">Light</string>
     <string name="refresh_values">Refresh Values</string>
     <string name="toggle_values">Toggle Values</string>
+    <string name="faqBtn">FAQ</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="view_graph">View Graph</string>

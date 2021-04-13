@@ -1,7 +1,9 @@
 package com.eh9.eh9project
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.view.View.inflate
@@ -23,6 +25,7 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet
 import java.util.ArrayList
 import android.view.MenuItem
+import android.widget.Button
 
 class SettingsFragment : Fragment(R.layout.fragment_settings) {
 
@@ -49,6 +52,16 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
                 AppCompatDelegate.setDefaultNightMode(theme)
                 (activity as MainActivity).saveTheme(theme)
             }
+        }
+
+        // added a FAQ button listener
+        val faqBtn = getView()?.findViewById<Button>(R.id.faqBtn)
+        faqBtn?.setOnClickListener {
+            val openURL = Intent(Intent.ACTION_VIEW)
+            openURL.data = Uri.parse(
+                "https://***REMOVED***/***REMOVED***/Super_Duper_Password_Utility_Tool_9001/FAQ.php"
+            )
+            startActivity(openURL)
         }
     }
 }
