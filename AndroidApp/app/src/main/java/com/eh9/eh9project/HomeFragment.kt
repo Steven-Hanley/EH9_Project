@@ -1,6 +1,5 @@
 package com.eh9.eh9project
 
-
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
@@ -15,13 +14,11 @@ import androidx.navigation.fragment.findNavController
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.eh9.eh9project.classes.apiResults
+import com.eh9.eh9project.classes.ApiResults
 import com.google.gson.Gson
 import java.nio.charset.Charset
 
-
 class HomeFragment : Fragment(R.layout.fragment_home) {
-    lateinit var fragmentTransaction: FragmentTransaction
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -29,27 +26,21 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val passResults = view.findViewById<TextView>(R.id.passResults)
         passResults?.movementMethod = ScrollingMovementMethod()
 
-
-
         //Sets the listener for analyse button and when clicked retrieves the text from pass field and sends it to the api removes the text and shows loading thing also lowers keyboard (Steven)
         val submitButton = getView()?.findViewById<Button>(R.id.submitPassword)
         val passwordText = getView()?.findViewById<EditText>(R.id.passwordSubmission)
         submitButton?.setOnClickListener {
             val password = passwordText?.text.toString()
-            if(password == ""){
+            if (password == "") {
                 Toast.makeText(context, "Please Enter Password", Toast.LENGTH_SHORT).show()
-            }else{
+            } else {
                 view.let { activity?.hideKeyboard(it) }
                 val loading = view.findViewById<RelativeLayout>(R.id.loadingPanel)
                 loading.visibility = View.VISIBLE
-
                 passwordText?.setText("")
                 sendRequest(password)
             }
-
         }
-
-
     }
 
     //This Function Sends the request to the API and retrieves the results after the results are received sends the function that prints the results the results of the generate advice function (Steven)
@@ -63,7 +54,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     Method.POST, url,
                     Response.Listener { response ->
                         // response
-                        val results = Gson().fromJson(response.toString(), apiResults::class.java)
+                        val results = Gson().fromJson(response.toString(), ApiResults::class.java)
                         printResults(generateAdvice(results))
                     },
                     Response.ErrorListener { error ->
@@ -79,11 +70,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     //Generates the advice based on results received from the API and adds it all to string (Steven)  TODO:Make the Advice consisted across platfroms
-    fun generateAdvice(results: apiResults): String {
+    fun generateAdvice(results: ApiResults): String {
+        //Sets Global Scores for access by radar graph fragment (Steven)
+        (activity as MainActivity).passScores = results.scores!!
 
-
-        results.scores?.let { (activity as MainActivity).updateRadar(it) }
-
+        //Begins Advice String and generates the advice (Steven)
         var advice = ""
         when (results.scores?.lengthScore){
             0 -> advice += "• This password is too short.\n"
@@ -155,12 +146,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             true -> advice += "• You have used this password before try and avoid repeating passwords to increase security across your accounts.\n"
             false -> advice += "• This password has not been used before.\n"
         }
-
         return advice
-
     }
 
-    //Removes the loading thing and adds the results to the results field
+    //Removes the loading circle and adds the results to the results field
     fun printResults(advice: String){
         val loading = view?.findViewById<RelativeLayout>(R.id.loadingPanel)
         loading?.visibility = View.GONE
@@ -170,12 +159,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         passResults?.movementMethod = ScrollingMovementMethod()
         passResults?.text = advice
 
-
-        val radarGraph = view?.findViewById<Button>(R.id.fuckyou)
+        //Shows button to transfer to the radargraph fragment with the current scores
+        val radarGraph = view?.findViewById<Button>(R.id.radarTransfer)
         radarGraph?.visibility = View.VISIBLE
-        radarGraph?.setOnClickListener(View.OnClickListener {
+        radarGraph?.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_home_to_radarFragment)
-        })
+        }
 
     }
 
@@ -184,6 +173,4 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
-
-
 }

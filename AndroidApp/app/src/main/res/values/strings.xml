@@ -9,7 +9,7 @@
     <string name="homeSubmitButtonText">Analyse</string>
     <string name="homeResultsHeader">Results</string>
     <string name="homeResultsField"></string>
-    <string name="homeExpandButton">See More</string>
+    <string name="view_graph">View Graph</string>
 
     <!-- Login Strings -->
     <string name="loginUsernameField">Enter Username</string>
@@ -26,8 +26,9 @@
     <string name="refresh_values">Refresh Values</string>
     <string name="toggle_values">Toggle Values</string>
     <string name="faqBtn">FAQ</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="view_graph">View Graph</string>
+    <string name="faqDescriptor">Need Help? Check out our FAQ</string>
+    <string name="faqButton">FAQ</string>
+
+
 
 </resources>

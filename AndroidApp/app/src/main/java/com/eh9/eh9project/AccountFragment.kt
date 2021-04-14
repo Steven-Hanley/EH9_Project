@@ -105,16 +105,14 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
                         return requestBody.toByteArray(Charset.defaultCharset())
                     }
                 }
-
         queue.add(stringReq)
     }
 
-    //This function will recieve the info from the API and firstly make sure its a real user before secondly checking to see if the account password matches the password the user sent if it is runs login protocol (Steven)
+    //This function will receive the info from the API and firstly make sure its a real user before secondly checking to see if the account password matches the password the user sent if it is runs login protocol (Steven)
     fun verifyUser(results: user) = if(results.user_id == null){
         Toast.makeText(context, "Invalid Login Details", Toast.LENGTH_SHORT).show()
     }else{
         val password = view?.findViewById<EditText>(R.id.passwordLogin)?.text.toString()
-
         if (BCrypt.verifyer().verify(password.toByteArray(), results.password?.toByteArray()).verified){
             results.password = null
             Toast.makeText(context, "Successfully Logged In", Toast.LENGTH_SHORT).show()
@@ -125,7 +123,5 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
         }else{
             Toast.makeText(context, "Invalid Login Details", Toast.LENGTH_SHORT).show()
         }
-
     }
-
 }

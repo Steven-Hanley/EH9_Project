@@ -97,7 +97,7 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/fuckyou"
+        android:id="@+id/radarTransfer"
         style="@style/CustomButtons"
         android:visibility="gone"
         android:layout_width="wrap_content"

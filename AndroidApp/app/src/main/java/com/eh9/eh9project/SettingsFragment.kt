@@ -40,7 +40,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             2 -> themeButtons?.check(R.id.btnDark)
         }
 
-        //On Click Listener for button group when pressed checks what button is pressed and sets the theme to that button also runs the activity funtion to save theme (Steven)
+        //On Click Listener for button group when pressed checks what button is pressed and sets the theme to that button also runs the activity function to save theme (Steven)
         themeButtons?.addOnButtonCheckedListener { _, selectedBtnId, isChecked ->
             if (isChecked) {
                 val theme = when (selectedBtnId) {
@@ -48,7 +48,6 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
                     R.id.btnDark -> AppCompatDelegate.MODE_NIGHT_YES
                     else -> AppCompatDelegate.MODE_NIGHT_NO
                 }
-
                 AppCompatDelegate.setDefaultNightMode(theme)
                 (activity as MainActivity).saveTheme(theme)
             }
@@ -63,6 +62,15 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
             )
             startActivity(openURL)
         }
+
+//        //Code for the button that will take you to the FAQ page runs an web intent when clicked (Steven)
+//        val faqButton = getView()?.findViewById<Button>(R.id.faqButton)
+//        faqButton?.setOnClickListener {
+//            val url = "https://***REMOVED***/***REMOVED***/Super_Duper_Password_Utility_Tool_9001/FAQ.php"
+//            val intent : Intent = Intent(Intent.ACTION_VIEW)
+//            intent.data = Uri.parse(url)
+//            startActivity(intent)
+//        }
     }
 }
 
