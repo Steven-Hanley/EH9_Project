@@ -74,24 +74,44 @@
 </head> 
 <body>
     <div class="container">
-        <h1 id="title">Frequently Asked Questions</h1>
+        <h2 id="title">Frequently Asked Questions: Super Duper Password Utility Tool 9001</h1>
         <div class="accordion-setup">
             <div class="card">
-                <button class="accordion">Example 1</button>
+                <button class="accordion">
+                    What is Super Duper Password Utility Tool 9001</button>
                 <div class="panel">
-                    <p>asdasd</p>
+                    <p>A tool developed for Chrome and Android applications
+                    designed to help Abertay students with their password security.
+                    It is designed to educate users on their passwords and how they
+                    can create more secure passwords.</p>
                 </div>
             </div>
             <div class="card">
-                <button class="accordion">Example 2</button>
+                <button class="accordion">
+                How does it work?</button>
                 <div class="panel">
-                    <p>asdasd</p>
+                    <p>The application is designed to be intuitive to
+                    all levels of users and uses two main methods of displaying
+                    advice to users. Users who submit their password via the form
+                    are immediately assessed on the quality and characteristics of 
+                    their passwords via textual output. They are then given the
+                    option to view a radar graph which allows for further details on all
+                    characterisitcs of that submitted password to be shown to the user.
+                    <br><br>
+                    Staff and students who have their accounts signed in with the system
+                    can also submit their passwords and be offered to save that password 
+                    into the system, allowing the application to tell if that same user
+                    is reusing that password. The application is also available without being 
+                    a member of Abertay university, however the application will not store or 
+                    display data about password reuse for that unauthenticated user.
+                    </p>
                 </div>
             </div>
             <div class="card">
-                <button class="accordion">Example 3</button>
+                <button class="accordion">
+                What is a Radar Graph</button>
                 <div class="panel">
-                    <p>asdasd</p>
+                    <p></p>
                 </div>
             </div>
         </div>
