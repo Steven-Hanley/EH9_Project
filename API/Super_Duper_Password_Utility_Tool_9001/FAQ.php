@@ -74,7 +74,7 @@
 </head> 
 <body>
     <div class="container">
-        <h2 id="title">Frequently Asked Questions: Super Duper Password Utility Tool 9001</h1>
+        <h2 id="title">Frequently Asked Questions: Super Duper Password Utility Tool 9001</h2>
         <div class="accordion-setup">
             <div class="card">
                 <button class="accordion">
