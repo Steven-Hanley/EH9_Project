@@ -15,7 +15,11 @@
             app:destination="@id/navigation_account" />
         <action
             android:id="@+id/action_navigation_home_to_radarFragment"
-            app:destination="@id/radarFragment" />
+            app:destination="@id/radarFragment"
+            app:popUpTo="@id/navigation_home"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
