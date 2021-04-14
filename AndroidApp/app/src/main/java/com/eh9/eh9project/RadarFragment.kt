@@ -3,6 +3,7 @@ package com.eh9.eh9project
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.github.mikephil.charting.animation.Easing
@@ -16,7 +17,6 @@ import java.util.*
 
 
 class RadarFragment : Fragment(R.layout.fragment_radar) {
-
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             //Retrieves The scores from the main activity variable to be used for the graph (Steven)
@@ -75,7 +75,6 @@ class RadarFragment : Fragment(R.layout.fragment_radar) {
             chart.yAxis.textSize = 10F
             chart.yAxis.mAxisMaximum = 6F
             chart.data = newRadarData
-
         }
 }
 

@@ -23,47 +23,50 @@
         app:layout_constraintVertical_bias="0.043" />
 
     <EditText
-        android:id="@+id/usernameLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
-        android:autofillHints="AUTOFILL_HINT_USERNAME"
-        android:ems="10"
-        android:hint="@string/loginUsernameField"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
         android:id="@+id/passwordLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="204dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="20dp"
         android:autofillHints="AUTOFILL_HINT_PASSWORD"
         android:ems="10"
         android:hint="@string/loginPasswordField"
         android:inputType="textPassword"
         android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/loginSubmit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/usernameLogin" />
 
     <Button
         android:id="@+id/loginSubmit"
         style="@style/CustomButtons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="125dp"
-        android:layout_marginTop="276dp"
-        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="441dp"
         android:text="@string/loginButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordLogin" />
+
+    <EditText
+        android:id="@+id/usernameLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginEnd="101dp"
+        android:autofillHints="AUTOFILL_HINT_USERNAME"
+        android:ems="10"
+        android:hint="@string/loginUsernameField"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/passwordLogin"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
