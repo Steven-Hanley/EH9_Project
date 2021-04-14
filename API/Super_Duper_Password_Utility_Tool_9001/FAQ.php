@@ -96,9 +96,9 @@
                     are immediately assessed on the quality and characteristics of 
                     their passwords via textual output. They are then given the
                     option to view a radar graph which allows for further details on all
-                    characterisitcs of that submitted password to be shown to the user.
+                    characterisitcs of that submitted password to be shown to the user.</p>
                     <br><br>
-                    Staff and students who have their accounts signed in with the system
+                    <p>Staff and students who have their accounts signed in with the system
                     can also submit their passwords and be offered to save that password 
                     into the system, allowing the application to tell if that same user
                     is reusing that password. The application is also available without being 
