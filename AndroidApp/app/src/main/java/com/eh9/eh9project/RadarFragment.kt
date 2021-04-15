@@ -35,6 +35,7 @@ class RadarFragment : Fragment(R.layout.fragment_radar) {
             chart.description.isEnabled = false
             chart.webLineWidth = 1f
 
+
             //useful to export graph
             chart.webColor = Color.WHITE
             chart.webLineWidth = 1f
@@ -72,6 +73,8 @@ class RadarFragment : Fragment(R.layout.fragment_radar) {
             val qualities: Array<String> = arrayOf("Length", "Capitals", "Consecutive", "Complexity", "Repeating", "Numbers", "Lowercase")
             chart.xAxis.valueFormatter = IndexAxisValueFormatter(qualities)
             chart.xAxis.textSize = 10F
+            chart.xAxis.textColor = Color.WHITE
+            chart.yAxis.textColor = Color.WHITE
             chart.yAxis.textSize = 10F
             chart.yAxis.mAxisMaximum = 5F
             chart.data = newRadarData
