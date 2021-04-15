@@ -77,7 +77,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         //Begins Advice String and generates the advice (Steven)
         var advice = ""
         when (results.scores?.lengthScore){
-            0 -> advice += "• This password is too short.\n"
+            -1 -> advice += "• This password is too short.\n"
             1 -> advice += "• While this password is more than 8 characters it could still be longer.\n"
             2 -> advice += "• Password is a decent length but could still benefit from more characters.\n"
             4 -> advice += "• This password is a really strong length however passwords with over 20 characters are considered the optimal length.\n"
@@ -85,7 +85,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         when (results.scores?.capitalScore){
-            0 -> advice += "• This password doesn't contain any uppercase letters. Adding uppercase letters helps make passwords stronger\n"
+            -1 -> advice += "• This password doesn't contain any uppercase letters. Adding uppercase letters helps make passwords stronger\n"
             1 -> advice += "• This password only contains one uppercase letter consider adding more to increase security.\n"
             2 -> advice += "• While this password contains several uppercase letters it could benefit from adding more.\n"
             4 -> advice += "• This password contains a lot of uppercase letters however the optimal amount would be 6 or more.\n"
@@ -93,15 +93,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         when (results.scores?.lowerScore){
-            0 -> advice += "• This password doesn't contain any lowercase letters. Adding lowercase letters helps make passwords stronger\n"
-            1 -> advice += "• This password only contains one lowercase letter consider adding more to increase security.\n"
+            -1 -> advice += "• This password contains very few lowercase letters. Adding lowercase letters helps make passwords stronger\n"
+            1 -> advice += "• This password only contains few lowercase letters consider adding more to increase security.\n"
             2 -> advice += "• While this password contains several lowercase letters it could benefit from adding more.\n"
             4 -> advice += "• This password contains a lot of lowercase letters however the optimal amount would be 15 or more.\n"
             6 -> advice += "• This password has the optimal amount of lowercase letters.\n"
         }
 
         when (results.scores?.numericScore){
-            0 -> advice += "• This password doesn't contain any numbers. Adding numbers helps make passwords stronger\n"
+            -1 -> advice += "• This password doesn't contain any numbers. Adding numbers helps make passwords stronger\n"
             1 -> advice += "• This password only contains 3 numbers consider adding more to increase security.\n"
             2 -> advice += "• While this password contains several numbers it could benefit from adding more.\n"
             4 -> advice += "• This password contains a lot of numbers however the optimal amount would be 8 or more.\n"
@@ -109,7 +109,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         when (results.scores?.complexScore){
-            0 -> advice += "• This password doesn't contain any symbol. Adding symbol helps make passwords stronger\n"
+            -1 -> advice += "• This password doesn't contain any symbol. Adding symbol helps make passwords stronger\n"
             1 -> advice += "• This password only contains one symbol consider adding more to increase security.\n"
             2 -> advice += "• While this password contains several symbols it could benefit from adding more.\n"
             4 -> advice += "• This password contains a lot of symbols however the optimal amount would be 4 or more.\n"
@@ -117,7 +117,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         when (results.scores?.repeatingScore){
-            0 -> advice += "• This password contains a large amount of repeating characters this decreases password security.\n"
+            -1 -> advice += "• This password contains a large amount of repeating characters this decreases password security.\n"
             1 -> advice += "• This password contains four repeating characters. This lowers overall password security.\n"
             2 -> advice += "• This password doesn't contain many repeating characters however could still do with losing a few.\n"
             4 -> advice += "• This password doesn't contain many repeating characters however the optimal amount would be 2 or less.\n"
@@ -125,7 +125,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         when (results.scores?.consecutiveScore){
-            0 -> advice += "• This password contains a lot of alphabetic patterns this can make your password very weak and vulnerable to certain algorithms.\n"
+            -1 -> advice += "• This password contains a lot of alphabetic patterns this can make your password very weak and vulnerable to certain algorithms.\n"
             1 -> advice += "• This password contains four alphabetic patterns. This lowers overall password security.\n"
             2 -> advice += "• This password doesn't contain many alphabetic patterns however could still do with losing a few.\n"
             4 -> advice += "• This password doesn't contain many alphabetic patterns however the optimal amount would be 2 or less.\n"
