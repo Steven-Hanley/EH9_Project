@@ -4,7 +4,7 @@
                 //This function Scores the length of the user password
                 function length($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5) { 
 					//Import score
-					if (strlen($userPassword)) {
+					//if (strlen($userPassword)) {
                         $lengthScore = 0;
 						//check password ageainst criteria
                         if (strlen($userPassword) <= 7) {
@@ -27,14 +27,14 @@
                         
                             $lengthScore = $Score5;
                         }                           
-                     }  
+                     //}  
 					//output Score
                     return $lengthScore;
                 };
 				//This function Scores the number of capitals in the user password
                 function capitals($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5) {
                     $capitalScore = 0;
-					if (preg_match('/[A-Z]/', $userPassword)) {
+					//if (preg_match('/[A-Z]/', $userPassword)) {
                         if (!preg_match_all('/[A-Z]/', $userPassword)) {
 
                             $capitalScore = $Score1;                            
@@ -56,13 +56,13 @@
                             $capitalScore = $Score5;
 
                         }   
-                    }  
+                    //}  
                     return $capitalScore;
                 };
 				//This function Scores the number of lower case letters in the user password
                 function lower($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5) {
                     $lowerScore = 0;
-					if (preg_match('/[a-z]/', $userPassword)) {
+					//if (preg_match('/[a-z]/', $userPassword)) {
                         if (preg_match_all('/[a-z]/', $userPassword) <= 3) {
 
                             $lowerScore = $Score1;                            
@@ -83,13 +83,13 @@
 
                             $lowerScore = $Score5;    
                         }   
-                    }  
+                    //}  
                     return $lowerScore;
                 };
 				//This function Scores the number of numbers in the user password
                 function numbers($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5) {
                     $numericScore = 0;
-					if (preg_match('/[0-9]/', $userPassword)) {
+					//if (preg_match('/[0-9]/', $userPassword)) {
                         if (preg_match_all('/[0-9]/', $userPassword) <= 2) {
 
                             $numericScore = $Score1;
@@ -110,15 +110,15 @@
 
                             $numericScore += $Score5;
                         }                             
-                    }  
+                    //}  
                     return $numericScore;
                 };
 				//This function Scores the complexity of the user password
                 function complexity($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5) {
                     $complexScore = 0;
-					if (preg_match_all('/[\'()^&$.%£*!}{#@~?><>,|=_+¬-]/', $userPassword)) {   
+					/* if (preg_match_all('/[\'()^&$.%£*!}{#@~?><>,|=_+¬-]/', $userPassword)) {    */
 
-                        if (!preg_match_all('/[\'()^&$%£*!}{#@~?><>,|=_+¬-]/', $userPassword)) {    
+                        if (preg_match_all('/[\'()^&$%£*!}{#@~?><>,|=_+¬-]/', $userPassword) == 0) {    
                             
                             $complexScore = $Score1;
                         }
@@ -138,7 +138,7 @@
                             
                             $complexScore += $Score5;
                         }   
-                    } 
+                    //} 
                     return $complexScore;
                 };
               //This function Scores the number of repeating charaters in the user password
@@ -183,16 +183,30 @@
 				//This function Scores the number of consecutive charagets in the user password
 				function consecutive($userPassword, $Score1, $Score2, $Score3, $Score4, $Score5){
 					$consecutiveScore = 0;
+					$consecutiveNumber = 0;
+					
 					$file = file("Pattern.txt");
 					$items = count($file); 
   
 					foreach($file as $i ){
 						$i = preg_replace("/\r|\n/", "", $i);
 						//echo $i . "-<br>";
-						
 						if(stristr($userPassword, $i) !=false){
-							$consecutiveScore += 1;;
+							$consecutiveNumber += 1;;
 						}
+					}
+					$percentage = 100 / strlen($userPassword) * $consecutiveNumber;
+					
+					if($percentage < 40){
+						$consecutiveScore = $Score5;
+					}elseif($percentage > 40 && $percentage < 49){
+						$consecutiveScore = $Score4;
+					}elseif($percentage > 50 && $percentage < 59){
+						$consecutiveScore = $Score3;
+					}elseif($percentage > 60 && $percentage < 69){
+						$consecutiveScore = $Score2;
+					}elseif($percentage > 69){
+						$consecutiveScore = $Score1;
 					}
 					return $consecutiveScore;
 				}
@@ -200,7 +214,7 @@
 				//Main function that calls all functuins above
 				function PasswordCheck($userPassword){                              
 					//initialise variables
-					$Score1 = 0;
+					$Score1 = -1;
 					$Score2 = 1;
 					$Score3 = 2;
 					$Score4 = 4;

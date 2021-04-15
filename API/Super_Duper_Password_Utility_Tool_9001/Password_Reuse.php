@@ -73,7 +73,7 @@
     }
             
 
-
+/*
     function insertPasswordData($userID, $userPassword) {
         global $conn;
         $sql = "INSERT INTO Passwords (USER_ID, password) 
@@ -96,7 +96,7 @@
             return false;
         }     
     }
-
+*/
     // runs everything
     function passwordReuse($userID, $userPassword) {
         getConnection();

@@ -4,7 +4,7 @@
 
 This project contains all the work that our group did for the CMP311 Professional Project module. The team were given a range of briefs to choose from and decided upon a tool to help educate users on password security and how they can make more secure passwords. The planned users of this solution are users of the Abertay University IT system meaning they have an account assigned to them on this. The hope is with the development of this project we can better increase there security.
 
-We spent a lot of time planning out our solution and came to the conclusion that our final solution would consist of 3 main fundament parts. 
+We spent a lot of time planning out our solution and came to the conclusion that our final solution would consist of 3 main fundamental parts. 
 
 ---
 ### The API(Application Programming Interface)

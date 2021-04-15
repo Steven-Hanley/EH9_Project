@@ -50,24 +50,31 @@
                     if (is_array($num)) {
                         // compare the entered password to that password record
                         // change to password verify for hashed passwords
-                        if ($_POST['password'] == $num['password']) {
+                        if (password_verify($_POST['password'], $num['password'])) {
                             // passwords match
+                           // echo"working";
                             session_regenerate_id();
                             $_SESSION['valid_user'] = TRUE;
-                            $_SESSION['user_id'] = $num['USER_ID'];
-                            header("Location: Index.php");
+                            $session = $_SESSION['user_id'] = $num['USER_ID'];
+                            echo json_encode(array("status" => "login","cookie"=>$session));
+                           //echo json_encode(array("cookie"=> $_SESSION['valid_user']));
+                          
+                           //  header("Location: Index.php");
                             
                         } else {
                             // passwords don't match
-                            echo "Incorrect details"; echo "<br>"; 
+                            //echo "Incorrect details..."; echo "<br>"; 
+                            echo json_encode(array("status" => "fail"));
                         }
                     } else {
                         // no entries
-                        echo "Incorrect details"; echo "<br>";
+                        //echo "Incorrect details"; echo "<br>";
+                        echo json_encode(array("status" => "fail"));
 
                     }
 
-                    $stmt->close();
+                   // $stmt->close();
+                    
                 }
         }
 
@@ -76,7 +83,7 @@
 
     session_start();
     setupConnection();
-    echo "yes";
+    //echo "yes";
     checkAccount();
-    echo "yes";
+    //echo "yes";
 ?>

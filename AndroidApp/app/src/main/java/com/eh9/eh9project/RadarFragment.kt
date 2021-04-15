@@ -73,7 +73,7 @@ class RadarFragment : Fragment(R.layout.fragment_radar) {
             chart.xAxis.valueFormatter = IndexAxisValueFormatter(qualities)
             chart.xAxis.textSize = 10F
             chart.yAxis.textSize = 10F
-            chart.yAxis.mAxisMaximum = 6F
+            chart.yAxis.mAxisMaximum = 5F
             chart.data = newRadarData
         }
 }
