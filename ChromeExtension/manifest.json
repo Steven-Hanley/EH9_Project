@@ -1,0 +1,36 @@
+{
+    "name" : "Super Duper Password Utility Tool 9001",
+    "version" : "0.1.0",
+    "manifest_version" : 2,
+    "browser_action" : {
+        "default_popup":"PasswordCheck.html"
+
+    },
+    "content_security_policy":"script-src 'self' https://cdn.jsdelivr.net/npm/chart.js;object-src 'self'",
+    "permissions" : 
+    [
+        "tabs",
+		"storage",
+        "activeTab",
+        "http://*/*",
+        "https://*/",
+        "http://***REMOVED***/***REMOVED***/ChromeExtension/*",
+        "https://cdn.jsdelivr.net/npm/chart.js"
+    ],
+    
+    
+    "background":
+    {
+        "js" : ["jquery-3.6.0.min.js","https://cdn.jsdelivr.net/npm/chart.js","content.js"],
+        "scripts": ["./background.js"]
+        
+    },
+     "content_scripts" : [
+         {
+             "matches":["http://*/*", "https://*/*"],
+             "js" : ["jquery-3.6.0.min.js","content.js"]
+        }
+
+    ]
+         
+}
