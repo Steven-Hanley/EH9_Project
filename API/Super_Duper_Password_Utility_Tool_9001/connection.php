@@ -9,10 +9,10 @@
 
         GLOBAL $conn;
 
-        $host = "***REMOVED***";
-        $dbase = "***REMOVED***";
-        $username = "***REMOVED***";
-        $password = "***REMOVED***";
+        $host = "**************";
+        $dbase = "**************";
+        $username = "**************";
+        $password = "**************";
 
         // error handling for db connection
         try {

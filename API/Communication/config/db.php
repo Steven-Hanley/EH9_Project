@@ -6,10 +6,10 @@
 
         // declare database configuration details
         // CHANGE ME:
-        private $host = "***REMOVED***";
-        private $dbase = "***REMOVED***";
-        private $username = "***REMOVED***";
-        private $passwd = "***REMOVED***";
+        private $host = "**************";
+        private $dbase = "**************";
+        private $username = "**************";
+        private $passwd = "**************";
         public $conn;
         // CHANGE ME:
         public $file_path = 'C:\\xampp\\htdocs\\work\\';

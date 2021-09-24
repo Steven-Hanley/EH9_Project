@@ -1,8 +1,8 @@
 <?php 
-    $host = "***REMOVED***";
-    $dbase = "***REMOVED***";
-    $username = "***REMOVED***";
-    $passwd = "***REMOVED***";
+    $host = "**************";
+    $dbase = "**************";
+    $username = "**************";
+    $passwd = "**************";
     
     // Create connection
     $conn = mysql_connect($host, $username, $passwd, $dbase);
