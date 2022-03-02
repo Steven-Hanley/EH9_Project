@@ -14,7 +14,7 @@
         "activeTab",
         "http://*/*",
         "https://*/",
-        "http://***REMOVED***/***REMOVED***/ChromeExtension/*",
+        "http://***REMOVED***/~***REMOVED***/ChromeExtension/*",
         "https://cdn.jsdelivr.net/npm/chart.js"
     ],
     

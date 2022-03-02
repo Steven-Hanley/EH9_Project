@@ -10,7 +10,7 @@
         // db connection constructor variable and table name
         // CHANGE ME:
         private $conn;
-        private $table = "Passwords";
+        private $table = "***REMOVED***";
 
         // CHANGE ME: attributes we will be returning correspond
         // to db columns

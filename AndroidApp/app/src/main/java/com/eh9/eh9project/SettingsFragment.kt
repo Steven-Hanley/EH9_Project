@@ -58,7 +58,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
         faqBtn?.setOnClickListener {
             val openURL = Intent(Intent.ACTION_VIEW)
             openURL.data = Uri.parse(
-                "https://***REMOVED***/***REMOVED***/Super_Duper_Password_Utility_Tool_9001/FAQ.php"
+                "https://***REMOVED***/~***REMOVED***/Super_Duper_Password_Utility_Tool_9001/FAQ.php"
             )
             startActivity(openURL)
         }
@@ -66,7 +66,7 @@ class SettingsFragment : Fragment(R.layout.fragment_settings) {
 //        //Code for the button that will take you to the FAQ page runs an web intent when clicked (Steven)
 //        val faqButton = getView()?.findViewById<Button>(R.id.faqButton)
 //        faqButton?.setOnClickListener {
-//            val url = "https://***REMOVED***/***REMOVED***/Super_Duper_Password_Utility_Tool_9001/FAQ.php"
+//            val url = "https://***REMOVED***/~***REMOVED***/Super_Duper_Password_Utility_Tool_9001/FAQ.php"
 //            val intent : Intent = Intent(Intent.ACTION_VIEW)
 //            intent.data = Uri.parse(url)
 //            startActivity(intent)

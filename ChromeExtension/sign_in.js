@@ -36,7 +36,7 @@ if(username && password)
         }
 
     }
-        xmlhttp.open("POST", "https://***REMOVED***/***REMOVED***/Super_Duper_Password_Utility_Tool_9001/connection.php", true);
+        xmlhttp.open("POST", "https://***REMOVED***/~***REMOVED***/Super_Duper_Password_Utility_Tool_9001/connection.php", true);
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded",false);
         xmlhttp.send(data);  
 

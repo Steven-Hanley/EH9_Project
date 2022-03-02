@@ -123,7 +123,7 @@ var uid = 0;
 
 	}
 				
-	xmlhttp.open("POST", "https://***REMOVED***/***REMOVED***/Super_Duper_Password_Utility_Tool_9001/main.php", true);
+	xmlhttp.open("POST", "https://***REMOVED***/~***REMOVED***/Super_Duper_Password_Utility_Tool_9001/main.php", true);
 	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xmlhttp.send(data);
 
@@ -166,7 +166,7 @@ document.getElementById('Advanced').addEventListener('click',function(){
 });
 
 document.getElementById('FAQ').addEventListener('click',function(){
-	//window.location.href = "https://***REMOVED***/***REMOVED***/Super_Duper_Password_Utility_Tool_9001/FAQ.php";
+	//window.location.href = "https://***REMOVED***/~***REMOVED***/Super_Duper_Password_Utility_Tool_9001/FAQ.php";
 	window.location.replace('./FAQ.php');
 });
 	

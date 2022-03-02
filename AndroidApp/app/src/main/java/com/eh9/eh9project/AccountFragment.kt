@@ -87,7 +87,7 @@ class AccountFragment : Fragment(R.layout.fragment_account) {
     //This function will send the login username to the API and recieve the user info back. No password is sent from this. (Steven)
     private fun sendLogin(username: String){
         val queue = Volley.newRequestQueue(activity)
-        val url = "https://***REMOVED***/***REMOVED***/Super_Duper_Password_Utility_Tool_9001/retrieveuser.php"
+        val url = "https://***REMOVED***/~***REMOVED***/Super_Duper_Password_Utility_Tool_9001/retrieveuser.php"
         val requestBody = "username=$username"
         val stringReq : StringRequest =
                 object : StringRequest(

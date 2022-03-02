@@ -42,11 +42,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
     }
-
+	
     //This Function Sends the request to the API and retrieves the results after the results are received sends the function that prints the results the results of the generate advice function (Steven)
     private fun sendRequest(password: String){
         val queue = Volley.newRequestQueue(activity)
-        val url = "https://***REMOVED***/***REMOVED***/Super_Duper_Password_Utility_Tool_9001/main.php"
+        val url = "https://***REMOVED***/~***REMOVED***/Super_Duper_Password_Utility_Tool_9001/main.php"
         val id = (activity as MainActivity).appUser.user_id
         val requestBody = "password=$password&user_id=$id"
         val stringReq : StringRequest =
